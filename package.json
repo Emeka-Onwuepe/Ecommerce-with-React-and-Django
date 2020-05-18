@@ -1,0 +1,40 @@
+{
+    "name": "ecommerce",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "webpack --mode development --watch ./frontend/src/index.js --output ./static/Javascript/main.js ",
+        "build": "webpack --mode production ./frontend/src/index.js --output ./static/Javascript/main.js "
+    },
+    "keywords": [],
+    "author": "EMEKA ONWUEPE",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.9.0",
+        "@babel/preset-env": "^7.9.0",
+        "@babel/preset-react": "^7.9.4",
+        "babel-loader": "^8.1.0",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "css-loader": "^3.5.3",
+        "style-loader": "^1.2.1",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.11"
+    },
+    "dependencies": {
+        "autoprefixer": "^9.7.6",
+        "axios": "^0.19.2",
+        "mini-css-extract-plugin": "^0.9.0",
+        "node-sass": "^4.14.1",
+        "postcss-loader": "^3.0.0",
+        "prop-types": "^15.7.2",
+        "react": "^16.13.1",
+        "react-alert": "^7.0.0",
+        "react-alert-template-basic": "^1.0.0",
+        "react-dom": "^16.13.1",
+        "react-router-dom": "^5.1.2",
+        "react-transition-group": "^4.3.0",
+        "sass-loader": "^8.0.2"
+    }
+}
