@@ -1,0 +1,35 @@
+.search,
+.Mainsearch {
+    margin: 0px auto;
+    width: 80%
+}
+
+.Mainsearch input {
+    margin-bottom: 5px;
+}
+
+.Mainsearch form {
+    margin-bottom: 20px;
+}
+
+.Mainsearch button {
+    font-size: 18px;
+    background-color: purple;
+    color: white;
+    padding: 5px;
+    margin: 2px 0px 2px 10px;
+}
+
+@media screen and (min-width:320px) {
+    .search,
+    .Mainsearch {
+        width: 70%
+    }
+}
+
+@media screen and (min-width:420px) {
+    .search,
+    .Mainsearch {
+        width: 65%
+    }
+}

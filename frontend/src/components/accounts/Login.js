@@ -36,8 +36,8 @@ const Login = (props) => {
                 <input type="password" name="password" value={password} id="password" onChange={onChange} placeholder="Please Enter Your Password" />
                 <button className='submitButton' type="submit">LOGIN</button>
             </form>
-            <p><NavLink to="/register">REGISTER</NavLink> </p>
-            <p><a target="blank" href={`${location}/password_reset`}>FORGOT PASSWORD</a></p>
+            <p className="log"><NavLink to="/register">REGISTER</NavLink> </p>
+            <p className='restPassword'><a target="blank" href={`${location}/password_reset`}>FORGOT PASSWORD</a></p>
         </fieldset>
     );
 }

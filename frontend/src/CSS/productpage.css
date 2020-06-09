@@ -1,0 +1,96 @@
+.productDisplay {
+    text-align: center;
+    background-color: #f6f6f6;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.productDisplay p {
+    width: 90%;
+    margin: 5px auto;
+    padding: 5px;
+}
+
+.productDisplay img {
+    width: 230px;
+    height: 230px;
+}
+
+.productDisplay button {
+    color: white;
+    background-color: purple;
+    padding: 2px;
+}
+
+.decisionBox {
+    position: fixed;
+    top: 30%;
+    left: 3%;
+    border: 2px solid white;
+    background-color: white;
+    padding: 10px;
+    width: 260px;
+    border: 1px solid purple;
+}
+
+.decisionBox p {
+    font-size: 16px;
+}
+
+.decisionBox button {
+    color: white;
+    background-color: purple;
+    padding: 4px;
+    margin: 4px;
+}
+
+.productPage .categoryDisplayBox h3 {
+    color: purple;
+}
+
+@media screen and (min-width:300px) {
+    .decisionBox {
+        left: 7%;
+    }
+}
+
+@media screen and (min-width:320px) {
+    .productDisplay img {
+        width: 280px;
+        height: 280px;
+    }
+    .decisionBox {
+        left: 10%;
+    }
+}
+
+@media screen and (min-width:420px) {
+    .productDisplay img {
+        width: 400px;
+        height: 400px;
+    }
+    .decisionBox {
+        left: 20%;
+    }
+}
+
+@media screen and (min-width:640px) {
+    .decisionBox {
+        left: 30%;
+    }
+}
+
+@media screen and (min-width:1000px) {
+    .productDisplay p {
+        width: 60%;
+    }
+    .productDisplay {
+        padding: 7px;
+        width: 75%;
+        margin-left: 25%;
+        text-align: center;
+    }
+    .decisionBox {
+        left: 50%;
+    }
+}

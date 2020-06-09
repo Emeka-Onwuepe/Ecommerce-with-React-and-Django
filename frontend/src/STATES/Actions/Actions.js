@@ -28,6 +28,8 @@ export const LOADING = "LOADING";
 export const LOADED = "LOADED";
 export const DELETE_USER = "DELETE_USER";
 export const DELETE_MESSAGES = "DELETE_MESSAGES";
+export const SEND_MAIL = "SEND_MAIL";
+export const SET_SCREEN_SIZE = "SET_SCREEN_SIZE"
 
 //stort func
 const sort = (data) => {
@@ -182,6 +184,22 @@ export const LogOut = (data, config) => {
     })
 }
 
+export const sendMail = (data, config) => {
+    return axios.post('/api/ContactUS', data, config).then(res => {
+
+        return {
+            type: SEND_MAIL,
+            messages: res.data.message
+        }
+    }).catch(err => {
+        return {
+            type: ADD_ERROR,
+            data: err.response.data,
+            status: err.response.status,
+        }
+    })
+}
+
 
 //Reducer
 const storeReducer = (state, action) => {
@@ -288,6 +306,7 @@ const storeReducer = (state, action) => {
 
             }
         case LOGOUT:
+        case DELETE_USER:
             return {
                 ...state,
                 User: "",
@@ -296,12 +315,6 @@ const storeReducer = (state, action) => {
                 Ordered: "",
                 OrderedProduct: "",
                 loading: false,
-            }
-        case DELETE_USER:
-            return {
-                ...state,
-                User: "",
-                message: "",
             }
         case ADD_ERROR:
             return {
@@ -316,6 +329,18 @@ const storeReducer = (state, action) => {
                 message: "",
                 status: "",
                 messages: ""
+            }
+        case SEND_MAIL:
+            return {
+                ...state,
+                messages: action.messages,
+                loading: false,
+            }
+        case SET_SCREEN_SIZE:
+            return {
+                ...state,
+                screenWidth: action.width,
+                scrow: action.scrow,
             }
 
         default:
@@ -361,6 +386,22 @@ const StoreContextProvider = (props) => {
         useEffect(() => {
             localStorage.setItem("storestate", JSON.stringify(storestate))
         }, [storestate]);
+
+        useEffect(() => {
+            const onresizer = () => {
+                storedispatch({
+                    type: SET_SCREEN_SIZE,
+                    width: window.innerWidth,
+                    scrow: window.pageYOffset
+                })
+            }
+            window.addEventListener('resize', onresizer)
+            window.addEventListener('scroll', onresizer)
+
+            return () => {
+
+            };
+        }, [])
 
         return ( < storeContext.Provider value = {
                 {

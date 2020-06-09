@@ -1,0 +1,35 @@
+.header {
+    position: fixed;
+    width: 100%;
+    /* background: #aa9310; */
+    background-color: #f3d10d;
+    padding: 10px;
+    height: 100px;
+    top: 0px;
+    z-index: 100
+}
+
+#logo_div {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    -ms-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    position: absolute;
+    left: 5px;
+    z-index: 100;
+    top: 0px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 100%;
+    position: absolute;
+    top: 7px;
+}
+
+.separator {
+    position: relative;
+    margin-top: 100px;
+}

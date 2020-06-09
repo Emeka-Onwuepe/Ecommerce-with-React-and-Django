@@ -1,0 +1,109 @@
+.sideNav {
+    position: fixed;
+    width: 300px;
+    height: 83%;
+    background-color: white;
+    top: 100px;
+    left: 0%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    padding: 1% 0% 1% 0%;
+    display: none;
+    z-index: 200;
+}
+
+.sideNav input {
+    margin: 0% 15% 2% 15%;
+    width: 70%;
+    background-color: #f3d10d;
+    color: purple;
+}
+
+.sideNav h3 {
+    text-align: center;
+    padding: 0px 10px;
+    color: Purple
+}
+
+
+/* #sideNav h3 a {
+    font-size: 16px;
+    text-align: center;
+    padding-left: 15px;
+} */
+
+
+/* 
+.sideNav ul li {
+    width: 100%;
+    padding-left: 2%;
+    font-size: 18px;
+} */
+
+.sideNav a {
+    border-bottom: 1px dotted black;
+    border-top: 1px dotted black;
+    display: block;
+    width: 100%;
+    display: block;
+    padding: 5px;
+    padding-left: 10px;
+}
+
+.sideNav a p {
+    color: #0978c6;
+}
+
+.Notfound {
+    color: red;
+    width: 100%;
+    display: block;
+    padding: 5px;
+    padding-left: 10px;
+}
+
+.toggle {
+    cursor: pointer;
+    position: fixed;
+    right: 125px;
+    top: 65px;
+    z-index: 400;
+}
+
+.toggle span {
+    width: 30px;
+    height: 6px;
+    background-color: black;
+    margin: 3px 0px 3px 6px;
+    display: block;
+    position: relative;
+    bottom: 0px;
+    cursor: pointer;
+}
+
+@media screen and (min-width:1000px) {
+    .sideNav {
+        display: block;
+        background-color: white;
+        width: 25%;
+        height: 592px;
+        position: relative;
+        float: left;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        top: 0px;
+        left: -9px;
+    }
+    .toggle {
+        display: none
+    }
+    #sideNav h3 {
+        font-size: 20px;
+        text-align: center;
+    }
+    #sideNav h3 a {
+        font-size: 20px;
+        text-align: center
+    }
+}

@@ -79,6 +79,8 @@ class OrderView(generics.GenericAPIView):
         userData=request.data['user']
         orderedData=request.data['Ordered']
         orderedProductData=request.data['OrderedProduct']
+        print(orderedData)
+        print(orderedProductData)
         # user= request.user
         #user.address=userData["address"]
         serializer = self.get_serializer(instance=request.user,data=userData,partial=True)
@@ -94,10 +96,12 @@ class OrderView(generics.GenericAPIView):
         OrderedProduct=OrderedProductSerializer(data=request.data['OrderedProduct'],many=True,context={"purchaseId":order})
         OrderedProduct.is_valid(raise_exception=True)
         orderedproduct= OrderedProduct.save()
+       
+        print("success")
         #prepare and send email
         products= ""
         for item in orderedProductData :
-            products += f'<li>{item["name"]} {item["brand"]}, Qty:{item["quantity"]}</li>'
+            products += f'<li>{item["name"]} {item["brand"]}, Price: #{item["price"]}, Qty:{item["quantity"]}</li>'
         message=f"<p>You have a new order with the ID:<strong>{orderedData['OrderId']}</strong> and a total amount of <strong>#{orderedData['total']}</strong>.</p>"
         message+= f"<p>The ordered Product(s) is/are as follows: <br/><ol>{products}</ol></p><p>His email and password are as follows:<br/>"
         message+=f"Email: {updatedUser.email} <br/> Phone Number:{updatedUser.phone_number} <br/> Address:{updatedUser.address}</p>"
@@ -105,4 +109,19 @@ class OrderView(generics.GenericAPIView):
         return Response({"Ordered":Order.data})
     
     
-    
+class ContactUS(generics.GenericAPIView):
+    serializer_class = UserSerializer
+    permission_classes=[permissions.AllowAny,]
+        
+    def post(self, request, *args, **kwargs):
+        data= request.data
+        full_name = data["full_name"]
+        email = data["email"]
+        #email= settings.EMAIL_HOST_USER
+        phone_number = data["phone_number"]
+        subject = data["subject"]
+        message = data["message"]
+        Message = f"Hello, my name is {full_name}, my phone number and email address are {phone_number}, {email} respectively. \r\n\n {message}"
+        send = send_mail(subject, Message, "Illumepedia", [
+                         'pascalemy2010@gmail.com'], fail_silently=False,)
+        return Response({"message":"Your Message was sent successfully"})

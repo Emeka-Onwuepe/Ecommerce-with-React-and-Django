@@ -17,12 +17,14 @@ class CategorySerializer(serializers.ModelSerializer):
 class GetUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        exclude=["password","last_login","is_active","is_admin"]
+        exclude=["password","last_login","is_active","is_admin","staff","is_superuser","owner","groups","user_permissions"]
         
 class OrderedSerializer(serializers.ModelSerializer):
+    # created=serializers.DateTimeField(format="%d/%h/%Y %H:%M")
     class Meta:
         model=Ordered
         fields= "__all__"
+        # extra_kwargs = {"created": {"write_only": True}}
     
     def create(self, validated_data):
         order = Ordered.objects.create(OrderId=validated_data["OrderId"], customer=validated_data["customer"],total=validated_data["total"])
@@ -32,13 +34,14 @@ class OrderedSerializer(serializers.ModelSerializer):
 class OrderedProductSerializer(serializers.ModelSerializer):
     class Meta:
         model=OrderedProduct
-        fields= ["id","name","brand","quantity","product"]
+        fields= ["id","name","brand","quantity","price","product"]
     
     def create(self, validated_data):
         purchaseId= self.context.get("purchaseId")
         
-        Product = OrderedProduct.objects.create(name=validated_data["name"],brand=validated_data["brand"], quantity=validated_data["quantity"],purchaseId=purchaseId,
-                                product=validated_data["product"])
+        Product = OrderedProduct.objects.create(name=validated_data["name"],brand=validated_data["brand"], 
+                                                quantity=validated_data["quantity"],price=validated_data["price"],
+                                                purchaseId=purchaseId, product=validated_data["product"])
         Product.save()
         return Product
            

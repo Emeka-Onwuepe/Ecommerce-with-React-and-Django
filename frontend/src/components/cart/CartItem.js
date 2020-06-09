@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { storeContext, DeleteFromCart } from '../../STATES/Actions/Actions';
+import "../../CSS/cartItem.css"
 
 
 const CartItem = (props) => {
@@ -33,12 +34,12 @@ const CartItem = (props) => {
         storedispatch(DeleteFromCart(cart))
     }
     return (
-        <div>
+        <div className="cartDisplayBox">
             <img src={product.image} alt="" />
             <p >{product.name}</p>
             <p >{product.brand}</p>
             <p >{` $${product.price}`}</p>
-            <p>{product.quantity}</p>
+            <p>Qty: {product.quantity}</p>
             <button onClick={increment}>+</button>
             <button onClick={decrement}>-</button>
             <button onClick={deleteItem}>DELETE</button>

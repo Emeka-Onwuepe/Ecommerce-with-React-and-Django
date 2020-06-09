@@ -1,4 +1,4 @@
-import React, { useContext, useEffect,Fragment } from 'react';
+import React, { useContext, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, NavLink } from 'react-router-dom';
 import { storeContext, CLEAR_SUCCESS } from '../../STATES/Actions/Actions';
@@ -13,7 +13,7 @@ const ShoppingCart = (props) => {
         storedispatch({ type: CLEAR_SUCCESS })
     }, []);
     let orderedlist = <OrderedList products={Ordered} />
-    const itemDisplay = cart.map((product) => <Fragment key={product.id}><CartItem product={product}/></Fragment>)
+    const itemDisplay = cart.map((product) => <Fragment key={product.id}><CartItem product={product} /></Fragment>)
     let total = 0
     for (const product of cart) {
         let amount = product.price * product.quantity
@@ -24,12 +24,20 @@ const ShoppingCart = (props) => {
     const order = { "product": cart, total }
 
     return (
-        <div>
-            {Ordered.length > 0 ? orderedlist : ""}
-            {itemDisplay}
-            <p>Total: {`#${total}`}</p>
-            {directions}
-        </div>
+        <Fragment>
+
+            <div className="orderList" >
+                {Ordered.length > 0 ? orderedlist : ""}
+            </div>
+            <div className="orderListDisplay">
+                <h3>CART</h3>
+                {itemDisplay}
+                < p className="amount">Total Amount: {`#${total}`}</p>
+                <p className="directions"> {directions}</p>
+            </div>
+
+
+        </Fragment >
     );
 };
 

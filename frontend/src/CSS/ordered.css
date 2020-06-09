@@ -1,0 +1,80 @@
+.orderListDisplay {
+    padding: 7px;
+    min-height: 265px;
+    box-sizing: border-box;
+    background-color: #f4f8f7;
+    border: 0px solid black;
+    box-sizing: border-box;
+    /* margin: 0px auto 20px auto; */
+    overflow-y: hidden;
+    box-shadow: 0px 2px 8px 0px rgba(17, 17, 17, 0.5);
+    -ms-box-shadow: 0px 2px 8px 0px rgba(17, 17, 17, 0.5);
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(17, 17, 17, 0.5);
+}
+
+.orderedList {
+    margin: 10px;
+}
+
+.orderedList h3,
+.orderListDisplay h3 {
+    text-align: center;
+    color: purple;
+    background-color: white;
+    width: 210px;
+    margin: 5px auto;
+    font-size: 18px;
+    padding: 4px;
+}
+
+.amount,
+.directions {
+    clear: both;
+    text-align: center;
+    color: purple;
+    background-color: white;
+    width: 210px;
+    margin: 5px auto;
+    font-size: 18px;
+    padding: 4px;
+}
+
+.directions button {
+    color: white;
+    background-color: purple;
+    padding: 4px;
+}
+
+.orderedList ol {
+    text-align: center;
+}
+
+.orderedList li {
+    background-color: #f6f6f6;
+    display: inline-block;
+    margin: 1px;
+    padding: 5px;
+}
+
+table {
+    border: 2px solid purple;
+    padding: 5px;
+    background-color: #f6f6f6;
+    margin: 10px auto;
+}
+
+th {
+    border: 2px solid purple;
+    padding: 5px;
+    text-align: center;
+}
+
+td {
+    border: 2px solid purple;
+    padding: 5px;
+    text-align: center;
+}
+
+tfoot td {
+    font-weight: bolder;
+}

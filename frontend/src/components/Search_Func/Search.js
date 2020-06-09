@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { storeContext, addSearch, getCategory, GET_ALL, DELETE_SEARCH,load,LOADING } from '../../STATES/Actions/Actions';
-import Products from "../categories/Product/product"
+import { storeContext, addSearch, getCategory, GET_ALL, DELETE_SEARCH, load, LOADING } from '../../STATES/Actions/Actions';
+import Products from "../categories/Product/product";
+import '../../CSS/search.css';
 
 const initial = { search: "" }
+const notMatched = "No Search Match"
 const searchFunc = (data, store, dispatch, func) => {
     let result = []
     store.forEach(product => {
@@ -13,6 +15,9 @@ const searchFunc = (data, store, dispatch, func) => {
             result.push(product)
         }
     })
+    if (result.length == 0) {
+        result = notMatched
+    }
     dispatch(func(result))
 
 }
@@ -34,8 +39,12 @@ const Search = (props) => {
     }, []);
 
     if (storestate.searchResult != undefined && storestate.searchResult != "") {
-        searchResult = <Products products={storestate.searchResult} />
+        searchResult = storestate.searchResult != notMatched ? <Products products={storestate.searchResult} /> : <p style={{ color: "red" }}>{notMatched}</p>
     }
+    // else if (storestate.searchResult != undefined && storestate.searchResult == "") {
+    //     searchResult = <p>No Match</p>
+    //     console
+    // }
 
     const onChange = (e) => {
         setSearch({ ...searchstate, [e.target.name]: e.target.value })
@@ -43,17 +52,19 @@ const Search = (props) => {
     const onSubmit = e => {
         e.preventDefault();
         const { search } = searchstate;
-        searchFunc(search, searchstore.products, storedispatch, addSearch)
+        if (search.length > 0) {
+            searchFunc(search, searchstore.products, storedispatch, addSearch)
+        }
+
     }
 
     return (
-        <div>
+        <div className="Mainsearch">
             <form action="" onSubmit={onSubmit}>
-                <input onChange={onChange} type="text" name="search" value={search} id="search" />
-                <button type="submit">Search</button>
+                <input onChange={onChange} type="text" name="search" value={search} id="search" placeholder="Search Products and Brands" />
+                <button type="submit">SEARCH</button>
             </form>
             <div>
-
                 {searchResult}
             </div>
         </div>

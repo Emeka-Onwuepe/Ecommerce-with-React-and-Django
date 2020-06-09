@@ -1,24 +1,32 @@
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { storeContext } from '../../STATES/Actions/Actions';
-import styles from "../../CSS/slides.module.scss"
-const { banner, bannertext, slidetext } = styles
+import styles from "../../CSS/slides.css"
+
 
 const Slides = (props) => {
     const { storestate } = useContext(storeContext);
     const { store } = storestate
-    let images = []
+    let images = ['slide_1.jpg', 'slide_2.jpg']
+    let url = ""
+
     let text = 'We offer quality products for a token'
-    if (store != undefined || store == "") {
-        store.forEach(x => x.products.forEach(x => images.push(x.image)))
-    }
-    const [slideImage, setslideImage] = useState({ url: "", count: 0, });
+
+    const [slideImage, setslideImage] = useState({ url: images[0], count: 0, });
     const [slideText, setslideText] = useState({ textCount: 0, text: "" });
+
+    let imageTest = images.slice(0)
+
+    for (const image of imageTest) {
+        url = image
+
+    }
+
     useEffect(() => {
         if (images.length >= 0) {
             let slideTimer = setInterval(() => {
                 setslideImage({ url: images[slideImage.count], count: slideImage.count >= images.length - 1 ? 0 : slideImage.count + 1 })
-            }, 1000)
+            }, 3000)
             return () => {
                 clearInterval(slideTimer)
             }
@@ -37,9 +45,12 @@ const Slides = (props) => {
     }, [slideText])
 
     return (
-        <div className={banner} style={{ backgroundImage: `url(${slideImage.url})` }}>
-            <div className={bannertext}>
-                <p id={slidetext}>{slideText.text}</p>
+
+        <div className="banner" >
+            <img className="bannerImage" src={`static/CSS/${slideImage.url}`} alt="" />
+            <div style={{ backgroundImage: `url(static/CSS/${url})`, display: "none" }}></div>
+            <div className="bannertext">
+                <p id="slidetext">{slideText.text}</p>
             </div>
 
         </div>

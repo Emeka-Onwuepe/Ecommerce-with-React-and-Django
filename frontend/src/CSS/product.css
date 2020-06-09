@@ -1,13 +1,13 @@
 .productDisplayBox {
-    width: 160px;
-    height: 160px;
+    width: 190px;
+    height: 210px;
     padding: 7px;
     float: left;
     box-sizing: border-box;
-    background-color: white;
+    background-color: #f6f6f6;
     border: 0px solid black;
     box-sizing: border-box;
-    margin: 0px auto 10px auto;
+    margin: 0px 5px 10px 5px;
     overflow-y: hidden;
     box-shadow: 0px 2px 8px 0px rgba(17, 17, 17, 0.5);
     -ms-box-shadow: 0px 2px 8px 0px rgba(17, 17, 17, 0.5);
@@ -32,8 +32,27 @@
 } */
 
 .productDisplayBox img {
-    width: 120px;
-    height: 100px;
-    margin: 0px 10px;
+    width: 160px;
+    height: 140px;
+    margin: 0px 6.5px;
     font-size: 16px;
 }
+
+@media screen and (min-width:400px) {
+    .productDisplayBox {
+        margin: 0px 1px 10px 1px;
+    }
+}
+
+@media screen and (min-width:500px) {
+    .productDisplayBox {
+        margin: 0px 3px 10px 3px;
+    }
+}
+
+
+/* @media screen and (min-width:640px) {
+    .productDisplayBox {
+        margin: 0px 7px 10px 7px;
+    }
+} */

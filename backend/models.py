@@ -32,7 +32,7 @@ class Product(models.Model):
     discription=models.TextField()
     image=models.ImageField()
     pub_date = models.DateTimeField(auto_now_add=True)
-    mod_date = models.DateTimeField(null=True)
+    # mod_date = models.DateTimeField(null=True)
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
@@ -139,6 +139,7 @@ class Ordered(models.Model):
     OrderId=models.CharField(verbose_name='Order Id', max_length=50)
     customer=models.ForeignKey(User, verbose_name="customer", on_delete=models.CASCADE,related_name='customer')
     total=models.IntegerField(verbose_name="total",default=1)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.OrderId
@@ -153,6 +154,7 @@ class OrderedProduct(models.Model):
     name=models.CharField(verbose_name="name", max_length=156)
     brand=models.CharField(verbose_name="brand", max_length=156, default="null")
     quantity=models.IntegerField(verbose_name="quantity",default=0)
+    price= models.IntegerField()
     purchaseId=models.ForeignKey(Ordered, verbose_name="purchase id", on_delete=models.CASCADE,related_name='purchaseId')
     product=models.ForeignKey(Product, verbose_name="product", on_delete=models.CASCADE,related_name='product')
     

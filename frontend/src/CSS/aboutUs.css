@@ -1,0 +1,44 @@
+.AboutUs {
+    clear: both;
+    padding: 10px 20px;
+    background-color: rgb(244, 248, 247);
+    text-align: justify;
+}
+
+.AboutUs h3 {
+    margin: 0px auto;
+    text-align: center;
+    width: 150px;
+    padding: 5px;
+    font-size: 18px;
+    border-radius: 50px;
+    background-color: purple;
+    color: white;
+    text-align: center;
+}
+
+.AboutUs p {
+    text-indent: 30px;
+    margin-bottom: 20px;
+}
+
+.contactHome {
+    margin-top: -80px;
+}
+
+@media screen and (min-width:1000px) {
+    .AboutUs,
+    .contactHome {
+        width: 75%;
+        margin-left: 25%;
+        font-size: 18px;
+    }
+    .AboutUs h3 {
+        font-size: 20px;
+    }
+}
+
+
+/* f3d10d
+rgb(244, 248, 247)
+aa9310 */
