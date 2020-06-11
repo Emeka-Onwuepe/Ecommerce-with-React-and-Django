@@ -25,7 +25,9 @@ const ShoppingCart = (props) => {
 
     return (
         <Fragment>
-
+            {User.user !=undefined && User.user !="" ? <div className="userNameDiv"> 
+            <p className="userName">Welcome, {`${User.user.first_name.toUpperCase()} ${User.user.last_name.toUpperCase()}`} </p>
+            </div>:""}
             <div className="orderList" >
                 {Ordered.length > 0 ? orderedlist : ""}
             </div>

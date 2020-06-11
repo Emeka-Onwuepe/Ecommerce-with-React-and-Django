@@ -50,7 +50,8 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         "knox.auth.TokenAuthentication",
-    ]
+    ],
+    "DATETIME_FORMAT":"%d/%b/%Y %H:%M",
 }
 
 REST_KNOX = {

@@ -6,7 +6,7 @@ import Products from "../categories/Product/product";
 import '../../CSS/search.css';
 
 const initial = { search: "" }
-const notMatched = "No Search Match"
+const notMatched = "No Match Found"
 const searchFunc = (data, store, dispatch, func) => {
     let result = []
     store.forEach(product => {
@@ -20,6 +20,16 @@ const searchFunc = (data, store, dispatch, func) => {
     }
     dispatch(func(result))
 
+}
+
+let style = {
+    color: "red",
+    backgroundColor: "white",
+    width: "140px",
+    textAlign: "center",
+    padding: "2px",
+    fontSize: "18px",
+    margin: "0px auto",
 }
 
 const Search = (props) => {
@@ -39,7 +49,8 @@ const Search = (props) => {
     }, []);
 
     if (storestate.searchResult != undefined && storestate.searchResult != "") {
-        searchResult = storestate.searchResult != notMatched ? <Products products={storestate.searchResult} /> : <p style={{ color: "red" }}>{notMatched}</p>
+        searchResult = storestate.searchResult != notMatched ?
+            <Products products={storestate.searchResult} /> : <p style={style}>{notMatched}</p>
     }
     // else if (storestate.searchResult != undefined && storestate.searchResult == "") {
     //     searchResult = <p>No Match</p>

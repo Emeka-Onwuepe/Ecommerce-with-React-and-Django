@@ -38,7 +38,7 @@ const CartItem = (props) => {
             <img src={product.image} alt="" />
             <p >{product.name}</p>
             <p >{product.brand}</p>
-            <p >{` $${product.price}`}</p>
+            <p >{` #${product.price}`}</p>
             <p>Qty: {product.quantity}</p>
             <button onClick={increment}>+</button>
             <button onClick={decrement}>-</button>

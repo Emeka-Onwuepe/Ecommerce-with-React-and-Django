@@ -99,13 +99,17 @@ class OrderView(generics.GenericAPIView):
        
         print("success")
         #prepare and send email
+        
+        tableHead=f'<table><thead><tr><th>Product Name</th><th>Brand</th><th>Qty</th><th>Price</th></tr></thead>'
+        tableFoot=f'<tfoot><tr><td colspan="3">Total</td><td>#{orderedData["total"]}</td></tr></tfoot></table>'
         products= ""
         for item in orderedProductData :
-            products += f'<li>{item["name"]} {item["brand"]}, Price: #{item["price"]}, Qty:{item["quantity"]}</li>'
+            products += f'<tr><td>{item["name"]}</td><td>{item["brand"]}</td><td>{item["quantity"]}</td><td>#{item["price"]}</td></tr>'
+        productTable=f"{tableHead}{products}{tableFoot}"
         message=f"<p>You have a new order with the ID:<strong>{orderedData['OrderId']}</strong> and a total amount of <strong>#{orderedData['total']}</strong>.</p>"
-        message+= f"<p>The ordered Product(s) is/are as follows: <br/><ol>{products}</ol></p><p>His email and password are as follows:<br/>"
+        message+= f"<p>The ordered Product(s) is/are as follows: <br/>{productTable}</p><p>{updatedUser} contact detail is as follows:<br/>"
         message+=f"Email: {updatedUser.email} <br/> Phone Number:{updatedUser.phone_number} <br/> Address:{updatedUser.address}</p>"
-        send_mail(f"New Order from {updatedUser}", "", "Illumepedia", [siteOwner.email], fail_silently=False, html_message=message)
+        send_mail(f"New Order from {updatedUser}", "", "E-Commerce", [siteOwner.email], fail_silently=False, html_message=message)
         return Response({"Ordered":Order.data})
     
     
@@ -122,6 +126,6 @@ class ContactUS(generics.GenericAPIView):
         subject = data["subject"]
         message = data["message"]
         Message = f"Hello, my name is {full_name}, my phone number and email address are {phone_number}, {email} respectively. \r\n\n {message}"
-        send = send_mail(subject, Message, "Illumepedia", [
+        send = send_mail(subject, Message, "E-Commerce", [
                          'pascalemy2010@gmail.com'], fail_silently=False,)
         return Response({"message":"Your Message was sent successfully"})

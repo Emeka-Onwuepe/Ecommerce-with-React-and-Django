@@ -9,13 +9,14 @@ import "../../../CSS/productpage.css"
 
 const ProductPage = (props) => {
     const { brand, id, name } = useParams()
-    const [DivDisplay, setDivdisplay] = useState({ display: false })
+    const [DivDisplay, setDivdisplay] = useState({ display: false, check: false })
     const { storestate, storedispatch } = useContext(storeContext)
     const { store } = storestate
     let product = { image: "", name: "", brand: "", price: "", discription: "" }
     let products = "";
     let catProducts = "";
-    let check = ""
+    let check = false;
+    const initial = { display: false, check: false }
     useEffect(() => {
         const data = { "data": brand, "search": "brand" }
         getCategory(data, GET_BRAND).then(res => storedispatch(res))
@@ -34,16 +35,17 @@ const ProductPage = (props) => {
         if (products == "") {
             const catId = product.category
             let [category] = store.filter(x => x.id == catId)
-            catProducts = category.products
+            catProducts = category.products.filter(product => product.id != id)
         }
     }
 
     const onClick = () => {
+        // let check = false;
         setDivdisplay({ display: true })
-        let check = false;
         storestate.cart.forEach(x => {
             if (x.id == id) {
                 check = true
+                setDivdisplay({ display: true, check: true })
             }
         })
         const data = { id: product.id, name: product.name, brand: product.brand, price: product.price, quantity: 1, image: product.image }
@@ -55,7 +57,12 @@ const ProductPage = (props) => {
 
     const decisionBox = <div className="decisionBox">
         <p>Choose either to continue shopping or to view your shopping cart by checking out</p>
-        <button onClick={() => { setDivdisplay({ display: false }) }}>Continue Shopping</button>
+        <button onClick={() => { setDivdisplay(initial) }}>Continue Shopping</button>
+        <NavLink to="/ShoppingCart"><button>Check Out</button> </NavLink>
+    </div>
+    const alreadyInCart = <div className="decisionBox" >
+        <p style={{ color: "red", marginLeft: "50px" }}>Item already in Cart</p>
+        <button onClick={() => { setDivdisplay(initial) }}>Continue Shopping</button>
         <NavLink to="/ShoppingCart"><button>Check Out</button> </NavLink>
     </div>
     if (storestate.brand != undefined && product.image != "") {
@@ -69,7 +76,7 @@ const ProductPage = (props) => {
                     <p>{product.discription}</p>
                     <button onClick={onClick}>ADD TO CART</button>
                 </div>
-                {DivDisplay.display ? decisionBox : ""}
+                {DivDisplay.check && DivDisplay.display ? alreadyInCart : DivDisplay.display ? decisionBox : ""}
                 <div>
 
                     {products != "" ?

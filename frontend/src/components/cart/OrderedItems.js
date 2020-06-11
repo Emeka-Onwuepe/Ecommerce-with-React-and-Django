@@ -7,7 +7,7 @@ import '../../CSS/ordered.css'
 const OrderedItems = (props) => {
     const { id, total } = useParams()
     const { storestate, storedispatch } = useContext(storeContext)
-    const { OrderedProduct } = storestate
+    const { OrderedProduct, User } = storestate
     const { products } = OrderedProduct
     let items = ""
 
@@ -35,6 +35,10 @@ const OrderedItems = (props) => {
     } else {
 
         return (
+            <Fragment>
+             {User.user !=undefined && User.user !="" ? <div className="userNameDiv"> 
+            <p className="userName">Welcome, {`${User.user.first_name.toUpperCase()} ${User.user.last_name.toUpperCase()}`} </p>
+            </div>:""}
             <table>
                 <thead>
                     <tr>
@@ -53,6 +57,7 @@ const OrderedItems = (props) => {
                     </tr>
                 </tfoot>
             </table>
+            </Fragment>
         );
 
     }
