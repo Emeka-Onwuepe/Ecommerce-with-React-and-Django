@@ -20,13 +20,12 @@
 }
 
 .logout {
-    display: absolute;
     position: absolute;
     float: left;
     right: 10px;
     top: 55px;
-    background-color: purple;
-    color: white;
+    background-color: #fcfbfc;
+    color: purple;
     width: 80px;
 }
 

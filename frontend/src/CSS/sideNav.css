@@ -16,8 +16,7 @@
 .sideNav input {
     margin: 0% 15% 2% 15%;
     width: 70%;
-    background-color: #f3d10d;
-    color: purple;
+    border: 1px solid purple;
 }
 
 .sideNav h3 {
@@ -42,8 +41,8 @@
 } */
 
 .sideNav a {
-    border-bottom: 1px dotted black;
-    border-top: 1px dotted black;
+    border-bottom: 0.4px dotted purple;
+    border-top: 1px dotted purple;
     display: block;
     width: 100%;
     display: block;

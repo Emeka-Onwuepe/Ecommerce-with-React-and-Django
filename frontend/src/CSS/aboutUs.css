@@ -12,8 +12,9 @@
     padding: 5px;
     font-size: 18px;
     border-radius: 50px;
-    background-color: purple;
-    color: white;
+    color: purple;
+    background-color: white;
+    border: 2px solid;
     text-align: center;
 }
 

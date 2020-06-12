@@ -21,8 +21,9 @@ footer {
 
 body {
     /* background-color: #f3d10d; */
-    background-color: #aa9310;
+    /* background-color: #aa9310; */
     /* background-color: white; */
+    background-color: #fdfdfd;
 }
 
 a {
@@ -55,6 +56,7 @@ fieldset {
     position: relative;
     border: 0px;
     background-color: #fcfbfc;
+    border: 1px dotted purple;
     /* border-radius: 50px; */
 }
 
@@ -66,11 +68,11 @@ fieldset {
 
 legend {
     text-align: center;
-    background-color: #fcfbfc;
     margin: 0px auto;
     border-radius: 50px;
     padding: 5px;
     color: purple;
+    border: 2px solid;
 }
 
 label {
@@ -90,10 +92,16 @@ textarea {
     padding: 2px;
     text-align: center;
     height: 35px;
-    border: 0px dotted #0978c6;
-    background-color: #f4f8f7;
+    border: 0.1px dotted #0978c6;
+    /* background-color: #f4f8f7; */
     color: black;
     border-radius: 40px;
+}
+
+#search {
+    border: 0px;
+    background-color: rgb(244, 248, 247);
+    border: 1px solid black;
 }
 
 textarea {
@@ -137,6 +145,7 @@ button {
     letter-spacing: 1px;
     border-radius: 50px;
     color: purple;
+    border: 2px solid;
 }
 
 .userNameDiv {

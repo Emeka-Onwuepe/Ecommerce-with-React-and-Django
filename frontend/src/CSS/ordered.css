@@ -56,6 +56,10 @@
     padding: 5px;
 }
 
+.orderedList li p {
+    padding: 4px;
+}
+
 table {
     border: 2px solid purple;
     padding: 5px;
