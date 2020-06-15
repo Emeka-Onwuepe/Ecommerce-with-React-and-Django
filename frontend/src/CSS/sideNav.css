@@ -50,6 +50,17 @@
     padding-left: 10px;
 }
 
+#close {
+    position: fixed;
+    top: 115px;
+    left: 260px;
+    font-size: 36px;
+    border: 0px;
+    padding: 0px 2px;
+    background-color: rgb(244, 248, 247);
+    /* display: none; */
+}
+
 .sideNav a p {
     color: #0978c6;
     letter-spacing: 1px;
@@ -95,7 +106,8 @@
         top: 0px;
         left: -9px;
     }
-    .toggle {
+    .toggle,
+    #close {
         display: none
     }
     #sideNav h3 {

@@ -53,7 +53,7 @@ const OrderedItems = (props) => {
                 <tfoot>
                     <tr>
                         <td colspan="4">Total</td>
-                        <td>#{total}</td>
+                        <td># {total}</td>
                     </tr>
                 </tfoot>
             </table>

@@ -24,7 +24,7 @@ const fixedSideBar1000 = {
     display: "block",
     position: "relative",
     width: "25%",
-    height: "592px",
+    height: "85%",
     backgroundColor: "#f4f8f7",
     top: "0px",
     left: "-9px",
@@ -62,14 +62,24 @@ const SideNav = (props) => {
     }, [storestate]);
     const stickSideBar = () => {
 
+        // if (document.activeElement.id !== "SideSearch"){
+        //     console.log("yesss !")
+        // }
+
         if (screenWidth >= desktopView && scrow >= 510 || test && screenWidth >= desktopView && scrow >= 50) {
             setSideNavstate({ ...fixedSideBar1000, position: "fixed", top: "100px", left: "0px" })
 
         } else if (screenWidth >= desktopView && scrow <= 470 || test && screenWidth >= desktopView && scrow <= 30) {
-            setSideNavstate({ ...fixedSideBar1000, position: "relative", })
+            setSideNavstate({ ...fixedSideBar1000, position: "relative", height:"592px" })
 
         }
-        if (screenWidth < desktopView) {
+
+        //  if ( screenWidth<= 999 && ){
+        //      console.log("yesss !")
+        //      setSideNavDisplay({ display: true })
+        //  }
+
+        if (screenWidth < desktopView && document.activeElement.id !== "SideSearch") {
             setSideNavDisplay({ display: false })
             setSideNavstate({ ...fixedSideBarPhoneView })
         } else if (screenWidth > desktopView) {
@@ -79,6 +89,7 @@ const SideNav = (props) => {
     }
     let style = { ...sideNavstate }
 
+     
     // let searchedCat = searchState.searched
 
     const onChange = (e) => {
@@ -91,6 +102,13 @@ const SideNav = (props) => {
         })
         setSearch({ searching: true, data: data, searched: searchedCat })
     }
+
+    
+    // const onClick = (e) => {
+    //      setSideNavDisplay({ display: false })
+    // }
+
+
 
     if (store != undefined || store == "") {
         category = store.map(items => {
@@ -123,7 +141,8 @@ const SideNav = (props) => {
                 ...style, display: Display
             }}>
                 <h3>CATEGORIES</h3>
-                <input type="search" onChange={onChange} name="" id="" placeholder="Search categories" />
+                <button onClick={onclick} id="close" className="close">&times;</button>
+                <input type="search"  onChange={onChange} name="" id="SideSearch" placeholder="Search categories" />
                 {category}
             </div>
         </Fragment>

@@ -21,6 +21,7 @@ const ProductPage = (props) => {
         const data = { "data": brand, "search": "brand" }
         getCategory(data, GET_BRAND).then(res => storedispatch(res))
         storedispatch(load(LOADING))
+        window.scrollTop=0
     }, [id])
 
     if (storestate.brand != undefined) {

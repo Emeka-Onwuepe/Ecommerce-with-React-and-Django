@@ -9,7 +9,7 @@ const Contact = () => {
             <div className="headOffice office">
                 <h3>Head Office</h3>
                 <p><span> Address: </span> Shop 26 Midwifery Market, Okpanam Road, Asaba, Delta State</p>
-                <p><span> Phone:</span> (+234) <span className="tel">08064032699</span> </p>
+                <p><span> Phone:</span> (+234) <span className="tel">08133819187</span>, <span className="tel">07067906892</span> </p>
             </div>
             <div className="branchOffice office">
                 <h3>Branch Office</h3>

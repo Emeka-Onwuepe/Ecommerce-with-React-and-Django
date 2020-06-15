@@ -5,7 +5,7 @@
     background-position: center;
     background-size: cover;
     display: block;
-    height: 450px;
+    height: 420px;
     background-color: #666666;
 }
 
@@ -26,9 +26,19 @@
 #slidetext {
     color: white;
     text-shadow: 2px 2px 2px black;
-    font-size: 24px;
+    font-size: 18px;
     margin-top: 200px;
     text-align: left;
     font-weight: 500;
-    padding: 10px 3px 10px 30px;
+    padding: 10px;
+    line-height: 30px;
+    letter-spacing: 1.5px;
+    word-spacing: 1px;
+}
+
+@media screen and (min-width:460px) {
+    #slidetext {
+        padding-left: 30px;
+        font-size: 22px;
+    }
 }

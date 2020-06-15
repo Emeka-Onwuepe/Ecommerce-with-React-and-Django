@@ -109,7 +109,7 @@ class OrderView(generics.GenericAPIView):
         message=f"<p>You have a new order with the ID:<strong>{orderedData['OrderId']}</strong> and a total amount of <strong>#{orderedData['total']}</strong>.</p>"
         message+= f"<p>The ordered Product(s) is/are as follows: <br/>{productTable}</p><p>{updatedUser} contact detail is as follows:<br/>"
         message+=f"Email: {updatedUser.email} <br/> Phone Number:{updatedUser.phone_number} <br/> Address:{updatedUser.address}</p>"
-        send_mail(f"New Order from {updatedUser}", "", "E-Commerce", [siteOwner.email], fail_silently=False, html_message=message)
+        send_mail(f"New Order from {updatedUser}", "", "Peastan", [siteOwner.email], fail_silently=False, html_message=message)
         return Response({"Ordered":Order.data})
     
     
@@ -126,6 +126,6 @@ class ContactUS(generics.GenericAPIView):
         subject = data["subject"]
         message = data["message"]
         Message = f"Hello, my name is {full_name}, my phone number and email address are {phone_number}, {email} respectively. \r\n\n {message}"
-        send = send_mail(subject, Message, "E-Commerce", [
+        send = send_mail(subject, Message, "Peastan", [
                          'pascalemy2010@gmail.com'], fail_silently=False,)
         return Response({"message":"Your Message was sent successfully"})

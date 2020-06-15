@@ -4,7 +4,6 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import Login from './accounts/Login';
 import { storeContext } from '../STATES/Actions/Actions';
 import Categories from './categories/Categories';
-import CategoryDisplay from './categories/CategoryDisplay';
 import Slides from './slides/Slides';
 import Search from './Search_Func/Search';
 import HomeSearch from './Search_Func/HomesearchFunc';

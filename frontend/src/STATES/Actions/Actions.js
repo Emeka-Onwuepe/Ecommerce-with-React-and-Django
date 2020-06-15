@@ -31,13 +31,21 @@ export const DELETE_MESSAGES = "DELETE_MESSAGES";
 export const SEND_MAIL = "SEND_MAIL";
 export const SET_SCREEN_SIZE = "SET_SCREEN_SIZE"
 
+
+//Capitalise first word
+const sentenceCase = (data) => {
+    let firstWord = data.slice(0, 1).toUpperCase()
+    let rest = data.slice(1).toLowerCase()
+    return `${firstWord}${rest}`
+}
+
 //stort func
 const sort = (data) => {
         const stored = []
         let presort = {}
         data.categories.forEach(x => {
             presort.id = x.id
-            presort.name = x.name
+            presort.name = sentenceCase(x.name)
             const product = data.products.filter((y) => {
                 return x.id == y.category
             })
@@ -371,6 +379,7 @@ const StoreContextProvider = (props) => {
                         OrderedProduct: [],
                         loading: true,
                         cart: [],
+                        scrow:window.pageYOffset,
                         ...jsonify,
                         message: "",
                         status: "",

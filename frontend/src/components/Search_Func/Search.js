@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { storeContext, addSearch, getCategory, GET_ALL, DELETE_SEARCH, load, LOADING } from '../../STATES/Actions/Actions';
@@ -70,15 +70,17 @@ const Search = (props) => {
     }
 
     return (
+        <Fragment>
         <div className="Mainsearch">
             <form action="" onSubmit={onSubmit}>
                 <input onChange={onChange} type="text" name="search" value={search} id="search" placeholder="Search Products and Brands" />
                 <button type="submit">SEARCH</button>
             </form>
-            <div>
-                {searchResult}
-            </div>
         </div>
+        <div className="SearchDisplayBox">
+                 {searchResult}
+            </div>
+        </Fragment>
     );
 };
 

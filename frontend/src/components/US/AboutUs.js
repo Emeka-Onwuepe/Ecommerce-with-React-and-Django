@@ -9,17 +9,12 @@ const AboutUs = () => {
         <div>
             <div className="AboutUs">
                 <h3>ABOUT US</h3>
-                <p>We are the best in the market Following the June 25, 2014 bomb blast
-                in Wusa Abuja tablishing fund compensation for victims of terrorism in Nigeria.
-                He believed that it would ensure that victims of terrorism are given a helping hand
-                to rebuild their lives.
-             He expressed sadness over the blast, saying that those killed</p>
-                <p>We are the best in the market ja tablishing fund compensation for victims of terrorism
-                in Nigeria.
-                He believed that it would ensure that victims of terrorism are given a helping hand
-            to rebuild their lives.</p>
-                <p>We are the best in the market ishing fund compensation for victims of terrorism
-            in Nigerias</p>
+                <p>At Peastan Global Limited, we offer best quality of Textiles, Cosmetics, Markups, Orginal Human Hairs,
+                Organic Flawless creams and general goods. We offer both wholesale and retail services</p>
+                <p>We maintain standard customer relation practices and our goods prices are one of the bests
+                which have made us outstanding.</p>
+                <p>We accept cash on delivery and bank transfer which are preferred by most persons due to high rate of internet scams. We believe in building trust,
+                patronize us and you will be happy you did.</p>
             </div>
             <div className="contactHome">
                 <Contact />

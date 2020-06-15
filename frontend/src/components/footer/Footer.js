@@ -10,7 +10,7 @@ const Footer = (props) => {
     const { screenWidth, scrow } = storestate
     const desktopView = 1000
     let location = useLocation()
-    const test = /(searchproduct|ShoppingCart|ordered|confirmOrder)/.test(location.pathname)
+    const test = /(searchproduct|ordered|confirmOrder)/.test(location.pathname)
     console.log(test)
     const test2 = /(^\/$|categories|product)/.test(location.pathname)
     const desktop = screenWidth > desktopView
@@ -45,9 +45,9 @@ const Footer = (props) => {
     }
     return (
         <div>
-            <footer style={test ? footerStyleAlter : test2 && desktop ? footerStyleHome : footerStyle}>
+            <footer style={test && desktop ? footerStyleAlter : test2 && desktop ? footerStyleHome : footerStyle}>
                 <p id="footer"> Copyright &copy; <span id="footerdate" style={{ padding: "0%" }}>{footerDate}</span>.
-             All rights reserved. Illumepedia.com <br /> Designed by Emeka Onwuepe. </p>
+             All rights reserved. Peastan.com <br /> Designed by CasTech. </p>
             </footer>
         </div>
     );

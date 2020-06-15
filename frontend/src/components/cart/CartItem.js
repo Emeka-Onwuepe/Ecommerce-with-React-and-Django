@@ -40,9 +40,11 @@ const CartItem = (props) => {
             <p >{product.brand}</p>
             <p >{` #${product.price}`}</p>
             <p>Qty: {product.quantity}</p>
+            <div className="controlButtons">
             <button onClick={increment}>+</button>
             <button onClick={decrement}>-</button>
             <button onClick={deleteItem}>DELETE</button>
+            </div>
         </div>
     )
 };
