@@ -49,23 +49,3 @@ const Alerts = () => {
 
 export default Alerts;
 
-
- // if (status != "") {
-        //     alert.error(message.detail)
-        //     for (let key in message) {
-        //         // alert.error(message)
-        //         console.log(message)
-        //         if (key == 'detail') {
-        //             alert.error(message[key])
-        //         } else {
-        //             // console.log(message)
-        //             alert.error(message[key].join(""))
-        //             //alert.error(message[key])
-        //         }
-        //     }
-        // }
-        // if (messages != "" && messages != undefined) {
-        //     // console.log(messages)
-        //     //alert.success(messages)
-        //     storedispatch({ type: DELETE_MESSAGES })
-        // }

@@ -79,14 +79,9 @@ class OrderView(generics.GenericAPIView):
         userData=request.data['user']
         orderedData=request.data['Ordered']
         orderedProductData=request.data['OrderedProduct']
-        print(orderedData)
-        print(orderedProductData)
-        # user= request.user
-        #user.address=userData["address"]
         serializer = self.get_serializer(instance=request.user,data=userData,partial=True)
         serializer.is_valid(raise_exception=True)
         updatedUser=serializer.save()
-        print(updatedUser)
         siteOwner= User.objects.get(owner=True)
         
         Ordered=OrderedSerializer(data=request.data['Ordered'])
@@ -97,7 +92,6 @@ class OrderView(generics.GenericAPIView):
         OrderedProduct.is_valid(raise_exception=True)
         orderedproduct= OrderedProduct.save()
        
-        print("success")
         #prepare and send email
         
         tableHead=f'<table><thead><tr><th>Product Name</th><th>Brand</th><th>Qty</th><th>Price</th></tr></thead>'
@@ -118,6 +112,7 @@ class ContactUS(generics.GenericAPIView):
     permission_classes=[permissions.AllowAny,]
         
     def post(self, request, *args, **kwargs):
+        siteOwner= User.objects.get(owner=True)
         data= request.data
         full_name = data["full_name"]
         email = data["email"]
@@ -126,6 +121,5 @@ class ContactUS(generics.GenericAPIView):
         subject = data["subject"]
         message = data["message"]
         Message = f"Hello, my name is {full_name}, my phone number and email address are {phone_number}, {email} respectively. \r\n\n {message}"
-        send = send_mail(subject, Message, "Peastan", [
-                         'pascalemy2010@gmail.com'], fail_silently=False,)
+        send = send_mail(subject, Message, "Peastan", [siteOwner.email], fail_silently=False,)
         return Response({"message":"Your Message was sent successfully"})

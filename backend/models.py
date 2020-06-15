@@ -114,7 +114,6 @@ class User(AbstractBaseUser,PermissionsMixin):
         return f'{self.first_name} {self.last_name}'
     def has_perm(self, perm, obj=None):
         if not self.is_admin and self.staff:
-            print(perm)
             if perm =="backend.add_user" or perm=="backend.change_user" or perm=="backend.delete_user":
                 return False
             else:

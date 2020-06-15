@@ -62,22 +62,13 @@ const SideNav = (props) => {
     }, [storestate]);
     const stickSideBar = () => {
 
-        // if (document.activeElement.id !== "SideSearch"){
-        //     console.log("yesss !")
-        // }
-
         if (screenWidth >= desktopView && scrow >= 510 || test && screenWidth >= desktopView && scrow >= 50) {
             setSideNavstate({ ...fixedSideBar1000, position: "fixed", top: "100px", left: "0px" })
 
         } else if (screenWidth >= desktopView && scrow <= 470 || test && screenWidth >= desktopView && scrow <= 30) {
-            setSideNavstate({ ...fixedSideBar1000, position: "relative", height:"592px" })
+            setSideNavstate({ ...fixedSideBar1000, position: "relative", height: "592px" })
 
         }
-
-        //  if ( screenWidth<= 999 && ){
-        //      console.log("yesss !")
-        //      setSideNavDisplay({ display: true })
-        //  }
 
         if (screenWidth < desktopView && document.activeElement.id !== "SideSearch") {
             setSideNavDisplay({ display: false })
@@ -88,9 +79,6 @@ const SideNav = (props) => {
 
     }
     let style = { ...sideNavstate }
-
-     
-    // let searchedCat = searchState.searched
 
     const onChange = (e) => {
         const data = e.target.value
@@ -103,7 +91,7 @@ const SideNav = (props) => {
         setSearch({ searching: true, data: data, searched: searchedCat })
     }
 
-    
+
     // const onClick = (e) => {
     //      setSideNavDisplay({ display: false })
     // }
@@ -142,7 +130,7 @@ const SideNav = (props) => {
             }}>
                 <h3>CATEGORIES</h3>
                 <button onClick={onclick} id="close" className="close">&times;</button>
-                <input type="search"  onChange={onChange} name="" id="SideSearch" placeholder="Search categories" />
+                <input type="search" onChange={onChange} name="" id="SideSearch" placeholder="Search categories" />
                 {category}
             </div>
         </Fragment>

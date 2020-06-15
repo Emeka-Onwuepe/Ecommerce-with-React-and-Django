@@ -11,7 +11,6 @@ const Footer = (props) => {
     const desktopView = 1000
     let location = useLocation()
     const test = /(searchproduct|ordered|confirmOrder)/.test(location.pathname)
-    console.log(test)
     const test2 = /(^\/$|categories|product)/.test(location.pathname)
     const desktop = screenWidth > desktopView
     let publishedDate = props.date
