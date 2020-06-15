@@ -101,12 +101,12 @@ class OrderView(generics.GenericAPIView):
         #prepare and send email
         
         tableHead=f'<table><thead><tr><th>Product Name</th><th>Brand</th><th>Qty</th><th>Price</th></tr></thead>'
-        tableFoot=f'<tfoot><tr><td colspan="3">Total</td><td>#{orderedData["total"]}</td></tr></tfoot></table>'
+        tableFoot=f'<tfoot><tr><td colspan="3">Total</td><td>&#x20A6; {orderedData["total"]}</td></tr></tfoot></table>'
         products= ""
         for item in orderedProductData :
-            products += f'<tr><td>{item["name"]}</td><td>{item["brand"]}</td><td>{item["quantity"]}</td><td>#{item["price"]}</td></tr>'
+            products += f'<tr><td>{item["name"]}</td><td>{item["brand"]}</td><td>{item["quantity"]}</td><td>&#x20A6; {item["price"]}</td></tr>'
         productTable=f"{tableHead}{products}{tableFoot}"
-        message=f"<p>You have a new order with the ID:<strong>{orderedData['OrderId']}</strong> and a total amount of <strong>#{orderedData['total']}</strong>.</p>"
+        message=f"<p>You have a new order with the ID:<strong>{orderedData['OrderId']}</strong> and a total amount of <strong>&#x20A6; {orderedData['total']}</strong>.</p>"
         message+= f"<p>The ordered Product(s) is/are as follows: <br/>{productTable}</p><p>{updatedUser} contact detail is as follows:<br/>"
         message+=f"Email: {updatedUser.email} <br/> Phone Number:{updatedUser.phone_number} <br/> Address:{updatedUser.address}</p>"
         send_mail(f"New Order from {updatedUser}", "", "Peastan", [siteOwner.email], fail_silently=False, html_message=message)

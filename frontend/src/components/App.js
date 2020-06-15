@@ -19,6 +19,7 @@ import Loading from "./Loading"
 import Header from './header/Header';
 import '../css/main.css'
 import Footer from './footer/Footer';
+import BackToTop from './BackToTop';
 
 
 const options = {
@@ -35,7 +36,8 @@ const App = () => {
             <AlertProvider template={AlertTemplate} {...options}>
                 <HashRouter>
                     <Header />
-                    <Loading/>
+                    <BackToTop />
+                    <Loading />
                     <Routes />
                     <Footer date={2020} />
                     <Alerts />

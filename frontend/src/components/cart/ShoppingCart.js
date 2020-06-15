@@ -25,16 +25,16 @@ const ShoppingCart = (props) => {
 
     return (
         <Fragment>
-            {User.user !=undefined && User.user !="" ? <div className="userNameDiv"> 
-            <p className="userName">Welcome, {`${User.user.first_name.toUpperCase()} ${User.user.last_name.toUpperCase()}`} </p>
-            </div>:""}
+            {User.user != undefined && User.user != "" ? <div className="userNameDiv">
+                <p className="userName">Welcome, {`${User.user.first_name.toUpperCase()} ${User.user.last_name.toUpperCase()}`} </p>
+            </div> : ""}
             <div className="orderList" >
                 {Ordered.length > 0 ? orderedlist : ""}
             </div>
             <div className="orderListDisplay">
                 <h3>CART</h3>
                 {itemDisplay}
-                < p className="amount">Total Amount: {`#${total}`}</p>
+                < p className="amount">Total Amount: &#x20A6; {`${total}`}</p>
                 <p className="directions"> {directions}</p>
             </div>
 

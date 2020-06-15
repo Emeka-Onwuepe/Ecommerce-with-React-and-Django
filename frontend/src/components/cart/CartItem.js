@@ -38,12 +38,12 @@ const CartItem = (props) => {
             <img src={product.image} alt="" />
             <p >{product.name}</p>
             <p >{product.brand}</p>
-            <p >{` #${product.price}`}</p>
+            <p > &#x20A6; {`${product.price}`}</p>
             <p>Qty: {product.quantity}</p>
             <div className="controlButtons">
-            <button onClick={increment}>+</button>
-            <button onClick={decrement}>-</button>
-            <button onClick={deleteItem}>DELETE</button>
+                <button onClick={increment}>+</button>
+                <button onClick={decrement}>-</button>
+                <button onClick={deleteItem}>DELETE</button>
             </div>
         </div>
     )

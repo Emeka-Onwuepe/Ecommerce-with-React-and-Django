@@ -152,6 +152,29 @@
         margin-bottom: 60px;
     }
     
+    .backToTop {
+        position: fixed;
+        right: 5%;
+        top: 63%;
+        text-align: center;
+        background-color: rgba(1, 1, 1, 0.4);
+        z-index: 150;
+        padding: 2px;
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        display: none;
+    }
+    
+    .backToTop button {
+        color: white;
+        width: 40px;
+        height: 50px;
+        font-size: 30px;
+        background-color: rgba(1, 1, 1, 0.4);
+        border: 0px;
+    }
+    
     #footer,
     footer span {
         width: 100%;

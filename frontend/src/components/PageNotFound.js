@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 
+const style = {
+    margin: "21% auto 21% auto",
+    width: "200px",
+}
+
 const PageNotFound = () => {
-return (<h1>paga not found</h1>)
-   
+    return (<h1 style={style}>PAGE NOT FOUND</h1>)
+
 };
 
 

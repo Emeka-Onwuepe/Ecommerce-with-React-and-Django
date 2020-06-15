@@ -21,7 +21,7 @@ const ProductPage = (props) => {
         const data = { "data": brand, "search": "brand" }
         getCategory(data, GET_BRAND).then(res => storedispatch(res))
         storedispatch(load(LOADING))
-        window.scrollTop=0
+        window.scrollTop = 0
     }, [id])
 
     if (storestate.brand != undefined) {
@@ -73,7 +73,7 @@ const ProductPage = (props) => {
                     <img src={product.image} alt="" />
                     <p >{product.name}</p>
                     <p >{product.brand}</p>
-                    <p >{` #${product.price}`}</p>
+                    <p > &#x20A6; {`${product.price}`}</p>
                     <p>{product.discription}</p>
                     <button onClick={onClick}>ADD TO CART</button>
                 </div>

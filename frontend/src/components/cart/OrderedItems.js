@@ -36,27 +36,27 @@ const OrderedItems = (props) => {
 
         return (
             <Fragment>
-             {User.user !=undefined && User.user !="" ? <div className="userNameDiv"> 
-            <p className="userName">Welcome, {`${User.user.first_name.toUpperCase()} ${User.user.last_name.toUpperCase()}`} </p>
-            </div>:""}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Brand</th>
-                        <th>Price</th>
-                        <th>Qty</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                {items}
-                <tfoot>
-                    <tr>
-                        <td colspan="4">Total</td>
-                        <td># {total}</td>
-                    </tr>
-                </tfoot>
-            </table>
+                {User.user != undefined && User.user != "" ? <div className="userNameDiv">
+                    <p className="userName">Welcome, {`${User.user.first_name.toUpperCase()} ${User.user.last_name.toUpperCase()}`} </p>
+                </div> : ""}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Brand</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    {items}
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">Total</td>
+                            <td>&#x20A6; {total}</td>
+                        </tr>
+                    </tfoot>
+                </table>
             </Fragment>
         );
 

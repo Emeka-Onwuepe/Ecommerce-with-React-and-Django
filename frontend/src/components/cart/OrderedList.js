@@ -7,7 +7,7 @@ const OrderedList = (props) => {
     const products = props.products
     const list = products.map(items => (<li key={items.id}><NavLink to={`/ordered/${items.id}/${items.total}`}>
         <span> Id:</span> {items.OrderId}
-        <p>Amount: #{items.total}</p>
+        <p>Amount: &#x20A6; {items.total}</p>
         <p> {items.created}</p>
     </NavLink></li>))
 
