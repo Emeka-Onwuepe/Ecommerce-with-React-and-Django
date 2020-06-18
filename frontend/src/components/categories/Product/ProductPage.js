@@ -60,7 +60,7 @@ const ProductPage = (props) => {
         }
         checkBoxs = Prices.map(x => <Fragment key={x.id}>
             <input onClick={onChange} type="checkbox" name="" id={x.id} />
-            <label htmlFor={`${x.id} ${x.size}`}>{`${x.size}:`} &#x20A6; {`${x.price}`}</label>
+            <label htmlFor={`${x.id} ${x.size}`}>{`${x.size}:`} &#x20A6;{`${x.price}`}</label>
         </Fragment>)
     }
 
@@ -116,7 +116,7 @@ const ProductPage = (props) => {
                     <img src={product.image} alt="" />
                     <p >{product.name}</p>
                     <p >{product.brand}</p>
-                    {Prices.length > 0 ? <div><p>Sizes and Prices</p>{checkBoxs}</div> : <p > &#x20A6; {`${product.price}`}</p>}
+                    {Prices.length > 0 ? <div className="prices"><p>Sizes and Prices</p>{checkBoxs}</div> : <p > &#x20A6; {`${product.price}`}</p>}
                     <p>{product.discription}</p>
                     <button onClick={onClick}>ADD TO CART</button>
                 </div>

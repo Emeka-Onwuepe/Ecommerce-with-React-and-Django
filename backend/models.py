@@ -38,7 +38,7 @@ class MultiplePrice(models.Model):
 class Product(models.Model):
     category= models.ForeignKey(Category, related_name='category', on_delete=models.CASCADE)
     name =models.CharField(max_length=156)
-    price= models.IntegerField()
+    price= models.IntegerField(blank=True, default=0)
     multiprice=models.ManyToManyField(MultiplePrice,default="none")
     brand=models.CharField(max_length=156)
     discription=models.TextField()

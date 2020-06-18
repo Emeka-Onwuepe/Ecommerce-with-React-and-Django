@@ -5,6 +5,26 @@
     margin-bottom: 10px;
 }
 
+
+/* .prices {
+    
+} */
+
+.prices p {
+    color: purple
+}
+
+.prices input {
+    display: inline;
+    height: 0px;
+    width: 10px;
+}
+
+.prices label {
+    margin: 0px 25px 10px 5px;
+    color: black;
+}
+
 .productDisplay p {
     width: 90%;
     margin: 5px auto;
