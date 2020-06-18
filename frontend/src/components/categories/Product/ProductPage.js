@@ -10,11 +10,14 @@ import "../../../CSS/productpage.css"
 const ProductPage = (props) => {
     const { brand, id, name } = useParams()
     const [DivDisplay, setDivdisplay] = useState({ display: false, check: false })
+    const [priceState, setpriceState] = useState([])
     const { storestate, storedispatch } = useContext(storeContext)
-    const { store } = storestate
-    let product = { image: "", name: "", brand: "", price: "", discription: "" }
+    const { store, prices } = storestate
+    let product = { image: "", name: "", brand: "", price: "", discription: "", multiprice: "" }
     let products = "";
     let catProducts = "";
+    let Prices = []
+    let checkBoxs = ""
     let check = false;
     const initial = { display: false, check: false }
     useEffect(() => {
@@ -38,22 +41,62 @@ const ProductPage = (props) => {
             let [category] = store.filter(x => x.id == catId)
             catProducts = category.products.filter(product => product.id != id)
         }
+
+    }
+    const onChange = (e) => {
+        let [price] = Prices.filter(x => x.id == e.target.id)
+        price.checked = e.target.checked
+        let [rest] = Prices.filter(x => x.id != e.target.id)
+        setpriceState([price, rest])
+
+    }
+
+    if (product.multiprice != "" && product.multiprice.length > 0) {
+        let array = product.multiprice
+
+        for (const index of array) {
+            let [price] = prices.filter(x => x.id == index)
+            Prices.push(price)
+        }
+        checkBoxs = Prices.map(x => <Fragment key={x.id}>
+            <input onClick={onChange} type="checkbox" name="" id={x.id} />
+            <label htmlFor={`${x.id} ${x.size}`}>{`${x.size}:`} &#x20A6; {`${x.price}`}</label>
+        </Fragment>)
     }
 
     const onClick = () => {
         // let check = false;
-        setDivdisplay({ display: true })
-        storestate.cart.forEach(x => {
-            if (x.id == id) {
-                check = true
-                setDivdisplay({ display: true, check: true })
-            }
-        })
-        const data = { id: product.id, name: product.name, brand: product.brand, price: product.price, quantity: 1, image: product.image }
-        if (check != true) {
-            storedispatch(addToCart(data))
-        }
+        if (product.multiprice.length > 0) {
+            if (priceState.length > 0) {
+                setDivdisplay({ display: true })
+                let filtered = priceState.filter(x => x.checked == true)
+                for (const index of filtered) {
+                    const data = { id: parseInt(`${product.id}${index.id}`), Id: product.id, name: product.name, brand: product.brand, price: index.price, size: index.size, quantity: 1, image: product.image }
+                    storestate.cart.forEach(x => {
+                        if (x.id == data.id) {
+                            check = true
+                            setDivdisplay({ display: true, check: true })
+                        }
+                    })
+                    if (check != true) {
+                        storedispatch(addToCart(data))
+                    }
 
+                }
+            }
+        } else if (product.multiprice.length == 0) {
+            setDivdisplay({ display: true })
+            storestate.cart.forEach(x => {
+                if (x.id == id) {
+                    check = true
+                    setDivdisplay({ display: true, check: true })
+                }
+            })
+            if (check != true) {
+                const data = { id: product.id, Id: product.id, name: product.name, brand: product.brand, price: product.price, quantity: 1, image: product.image }
+                storedispatch(addToCart(data))
+            }
+        }
     }
 
     const decisionBox = <div className="decisionBox">
@@ -73,7 +116,7 @@ const ProductPage = (props) => {
                     <img src={product.image} alt="" />
                     <p >{product.name}</p>
                     <p >{product.brand}</p>
-                    <p > &#x20A6; {`${product.price}`}</p>
+                    {Prices.length > 0 ? <div><p>Sizes and Prices</p>{checkBoxs}</div> : <p > &#x20A6; {`${product.price}`}</p>}
                     <p>{product.discription}</p>
                     <button onClick={onClick}>ADD TO CART</button>
                 </div>

@@ -22,12 +22,24 @@ class Category(models.Model):
     
     def __str__(self):
         return  self.name
+    
+class MultiplePrice(models.Model):
+    size= models.CharField( max_length=10)
+    price= models.IntegerField()
+    
+    class Meta:
+        verbose_name = 'MultiplePrice'
+        verbose_name_plural = 'MultiplePrices'
+    
+    def __str__(self):
+        return  f"size: {self.size},  price: {self.price}"
 
 
 class Product(models.Model):
     category= models.ForeignKey(Category, related_name='category', on_delete=models.CASCADE)
     name =models.CharField(max_length=156)
     price= models.IntegerField()
+    multiprice=models.ManyToManyField(MultiplePrice,default="none")
     brand=models.CharField(max_length=156)
     discription=models.TextField()
     image=models.ImageField()
@@ -154,6 +166,7 @@ class OrderedProduct(models.Model):
     brand=models.CharField(verbose_name="brand", max_length=156, default="null")
     quantity=models.IntegerField(verbose_name="quantity",default=0)
     price= models.IntegerField()
+    size= models.CharField(max_length=50,blank=True, default="",null=True)
     purchaseId=models.ForeignKey(Ordered, verbose_name="purchase id", on_delete=models.CASCADE,related_name='purchaseId')
     product=models.ForeignKey(Product, verbose_name="product", on_delete=models.CASCADE,related_name='product')
     

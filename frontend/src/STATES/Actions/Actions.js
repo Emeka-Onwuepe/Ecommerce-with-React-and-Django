@@ -12,7 +12,7 @@ import React, {
 export const GET_STORE = "GET_STORE";
 export const GET_ORDERED_PRODUCTS = "GET_ORDERED_PRODUCTS"
 export const ADD_TO_CART = "ADD_TO_CART";
-export const DELETE_FROM_CART = "DELETE_FROM_CART";
+export const UPDATE_CART = "UPDATE_CART";
 export const ADD_ERROR = "ADD_ERROR";
 export const ADD_SEARCH = "ADD_SEARCH";
 export const DELETE_SEARCH = "DELETE_SEARCH";
@@ -63,7 +63,8 @@ export const getstore = () => {
         let data = sort(res.data)
         return {
             type: GET_STORE,
-            data: data
+            data: data,
+            prices: res.data.prices
         }
     }).catch(err => {
         return {
@@ -84,9 +85,9 @@ export const deleteUser = () => {
         type: DELETE_USER
     }
 }
-export const DeleteFromCart = (data) => {
+export const UpdateCart = (data) => {
     return {
-        type: DELETE_FROM_CART,
+        type: UPDATE_CART,
         data: data
     }
 }
@@ -103,6 +104,7 @@ export const getCategory = (data, type) => {
         return {
             type: type,
             data: res.data,
+            prices: res.data.prices,
             messages: "Logged In Successfully"
         }
     }).catch(err => {
@@ -216,6 +218,7 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 store: action.data,
+                prices: action.prices,
                 loading: false,
             }
         case PROCESS_ORDER:
@@ -240,7 +243,7 @@ const storeReducer = (state, action) => {
                 cart: [...state.cart, action.data],
                 loading: false,
             }
-        case DELETE_FROM_CART:
+        case UPDATE_CART:
             return {
                 ...state,
                 cart: [...action.data],
@@ -250,12 +253,14 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 category: action.data,
+                prices: action.prices,
                 loading: false,
             }
         case GET_BRAND:
             return {
                 ...state,
                 brand: action.data,
+                prices: action.prices,
                 loading: false,
             }
         case GET_ORDERED_PRODUCTS:
@@ -268,6 +273,7 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 searchstore: action.data,
+                prices: action.prices,
                 loading: false,
             }
         case LOADING:
@@ -381,6 +387,8 @@ const StoreContextProvider = (props) => {
                         cart: [],
                         scrow: window.pageYOffset,
                         width: window.innerWidth,
+                        prices: [],
+                        store: [],
                         ...jsonify,
                         message: "",
                         status: "",
@@ -388,7 +396,21 @@ const StoreContextProvider = (props) => {
                         check: "",
                     }
                 } else {
-                    finaldata = {}
+                    finaldata = {
+                        User: "",
+                        Ordered: [],
+                        OrderedProduct: [],
+                        loading: true,
+                        cart: [],
+                        scrow: window.pageYOffset,
+                        width: window.innerWidth,
+                        prices: [],
+                        store: [],
+                        message: "",
+                        status: "",
+                        messages: "",
+                        check: "",
+                    }
                 }
                 return finaldata
             }

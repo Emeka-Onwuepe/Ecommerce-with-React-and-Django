@@ -20,6 +20,7 @@ const OrderedItems = (props) => {
         items = products.map(item => <tr key={item.id}>
             <td>{item.name} </td>
             <td>{item.brand} </td>
+            <td>{item.size} </td>
             <td>{item.price} </td>
             <td>{item.quantity} </td>
             <td>{item.price * item.quantity} </td>
@@ -44,6 +45,7 @@ const OrderedItems = (props) => {
                         <tr>
                             <th>Product Name</th>
                             <th>Brand</th>
+                            <th>Size</th>
                             <th>Price</th>
                             <th>Qty</th>
                             <th>Total</th>
@@ -52,7 +54,7 @@ const OrderedItems = (props) => {
                     {items}
                     <tfoot>
                         <tr>
-                            <td colspan="4">Total</td>
+                            <td colspan="5">Total</td>
                             <td>&#x20A6; {total}</td>
                         </tr>
                     </tfoot>

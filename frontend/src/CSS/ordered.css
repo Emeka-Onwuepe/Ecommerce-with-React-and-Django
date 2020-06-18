@@ -58,22 +58,24 @@
 }
 
 table {
-    border: 2px solid purple;
+    border: 1px solid purple;
     padding: 0px;
     background-color: #f6f6f6;
     margin: 10px auto 75px auto;
 }
 
 th {
-    border: 2px solid purple;
-    padding: 0px;
+    border: 1px solid purple;
+    padding: 3px;
     text-align: center;
+    font-size: 13px;
 }
 
 td {
-    border: 2px solid purple;
-    padding: 5px;
+    border: 1px solid purple;
+    padding: 3px;
     text-align: center;
+    font-size: 13px;
 }
 
 tfoot td {
@@ -85,10 +87,31 @@ tfoot td {
         padding: 3px;
     }
     table {
+        padding: 0px;
+    }
+    th {
+        padding: 3px;
+        font-size: 15.5px;
+    }
+    td {
+        font-size: 15.5px;
+    }
+}
+
+@media screen and (min-width:380px) {
+    table {
         padding: 2px;
+        border: 2px solid purple;
     }
     th {
         padding: 5px;
+        font-size: 16px;
+        border: 2px solid purple;
+    }
+    td {
+        font-size: 16px;
+        padding: 5px;
+        border: 2px solid purple;
     }
 }
 
@@ -127,11 +150,19 @@ tfoot td {
     .orderListDisplay {
         padding: 6px 3px;
     }
+    th,
+    td {
+        font-size: 18px;
+    }
 }
 
 @media screen and (min-width:1000px) {
     .orderListDisplay {
         padding: 7px;
         margin: 0px auto 132px auto;
+    }
+    th,
+    td {
+        font-size: 20px;
     }
 }

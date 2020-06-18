@@ -26,7 +26,7 @@ const Products = (props) => {
                             <img src={items.image} alt={`${items.name} image`} />
                         </div>
                         <p >{capitalizeFirst(items.name)}</p>
-                        <p className="price">  &#x20A6; {` ${items.price}`}</p>
+                        {items.multiprice.length > 0 ? <p id="prices">See Prices</p> : <p className="price">  &#x20A6; {` ${items.price}`}</p>}
                     </div>
                 </NavLink>
             })}

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { storeContext, DeleteFromCart } from '../../STATES/Actions/Actions';
+import { storeContext, UpdateCart } from '../../STATES/Actions/Actions';
 import "../../CSS/cartItem.css"
 
 
@@ -11,7 +11,7 @@ const CartItem = (props) => {
     const deleteItem = (e) => {
         e.preventDefault()
         const data = cart.filter(x => x.id != product.id)
-        storedispatch(DeleteFromCart(data))
+        storedispatch(UpdateCart(data))
     }
     const increment = (e) => {
         e.preventDefault()
@@ -20,7 +20,7 @@ const CartItem = (props) => {
                 products.quantity += 1
             }
         }
-        storedispatch(DeleteFromCart(cart))
+        storedispatch(UpdateCart(cart))
     }
     const decrement = (e) => {
         e.preventDefault()
@@ -31,7 +31,7 @@ const CartItem = (props) => {
                 }
             }
         }
-        storedispatch(DeleteFromCart(cart))
+        storedispatch(UpdateCart(cart))
     }
     return (
         <div className="cartDisplayBox">
@@ -40,6 +40,7 @@ const CartItem = (props) => {
             <p >{product.brand}</p>
             <p > &#x20A6; {`${product.price}`}</p>
             <p>Qty: {product.quantity}</p>
+            <p>size: {product.size}</p>
             <div className="controlButtons">
                 <button onClick={increment}>+</button>
                 <button onClick={decrement}>-</button>

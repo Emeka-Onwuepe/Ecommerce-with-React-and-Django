@@ -43,7 +43,10 @@ const Details = () => {
         for (const product of cart) {
             let amount = product.price * product.quantity
             total += amount
-            products.push({ "name": product.name, "quantity": product.quantity, "price": product.price, "brand": product.brand, "product": product.id })
+            products.push({
+                "name": product.name, "quantity": product.quantity, "price": product.price,
+                "size": product.size != undefined ? product.size : "", "brand": product.brand, "product": product.Id
+            })
         }
         const { first_name, last_name, phone_number, email, address } = formstate;
         const phone = errorTest.phone_number.test(phone_number)

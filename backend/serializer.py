@@ -2,13 +2,19 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 User=get_user_model()
 from django.contrib.auth import authenticate
-from .models import Category,Product,Ordered,OrderedProduct
+from .models import Category,Product,Ordered,OrderedProduct,MultiplePrice
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model=Product
         fields= "__all__"
+
+class MultiplePriceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=MultiplePrice
+        fields= "__all__"
     
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model=Category
@@ -34,13 +40,13 @@ class OrderedSerializer(serializers.ModelSerializer):
 class OrderedProductSerializer(serializers.ModelSerializer):
     class Meta:
         model=OrderedProduct
-        fields= ["id","name","brand","quantity","price","product"]
+        fields= ["id","name","brand","quantity","price", "size","product"]
     
     def create(self, validated_data):
         purchaseId= self.context.get("purchaseId")
         
         Product = OrderedProduct.objects.create(name=validated_data["name"],brand=validated_data["brand"], 
-                                                quantity=validated_data["quantity"],price=validated_data["price"],
+                                                quantity=validated_data["quantity"],price=validated_data["price"],size=validated_data["size"],
                                                 purchaseId=purchaseId, product=validated_data["product"])
         Product.save()
         return Product
