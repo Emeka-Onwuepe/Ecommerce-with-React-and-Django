@@ -16,6 +16,7 @@ django-rest-knox
 django-storages
 djangorestframework
 docutils
+gunicorn
 idna
 itypes
 Jinja2
