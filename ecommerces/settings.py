@@ -166,18 +166,18 @@ EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = "Peastan"
 
 
-# # AWS settings
-# AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID ")
-# AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-# AWS_STORAGE_BUCKET_NAME = "casper-web-files"
-# AWS_S3_FILE_OVERWRITE = False
-# DEFAULT_FILE_STORAGE = 'ecommerces.aws_storage.MediaStorage'
-# AWS_DEFAULT_ACL = None
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-# AWS_S3_OBJECT_PARAMETERS = {
-#     'CacheControl': 'max-age=86400',
-# }
-# # # STATICFILES_STORAGE = "ecommerces.aws_storage.StaticStorage"
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# AWS settings
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID ")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = "casper-web-files"
+AWS_S3_FILE_OVERWRITE = False
+DEFAULT_FILE_STORAGE = 'ecommerces.aws_storage.MediaStorage'
+AWS_DEFAULT_ACL = None
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+# # STATICFILES_STORAGE = "ecommerces.aws_storage.StaticStorage"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
