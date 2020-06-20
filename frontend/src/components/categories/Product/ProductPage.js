@@ -24,7 +24,7 @@ const ProductPage = (props) => {
         const data = { "data": brand, "search": "brand" }
         getCategory(data, GET_BRAND).then(res => storedispatch(res))
         storedispatch(load(LOADING))
-        window.scrollTop = 0
+        window.scrollTo("",0)
     }, [id])
 
     if (storestate.brand != undefined) {
@@ -117,7 +117,7 @@ const ProductPage = (props) => {
                     <p >{product.name}</p>
                     <p >{product.brand}</p>
                     {Prices.length > 0 ? <div className="prices"><p>Sizes and Prices</p>{checkBoxs}</div> : <p > &#x20A6; {`${product.price}`}</p>}
-                    <p>{product.discription}</p>
+                    <div dangerouslySetInnerHTML={{__html:product.discription}}></div>
                     <button onClick={onClick}>ADD TO CART</button>
                 </div>
                 {DivDisplay.check && DivDisplay.display ? alreadyInCart : DivDisplay.display ? decisionBox : ""}

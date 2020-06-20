@@ -6,6 +6,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.models import Group
 from .models import Category,Product,User,Ordered,OrderedProduct,MultiplePrice
+from .form import ProductForm
 # Register your models here.
 
 
@@ -97,6 +98,7 @@ class UserAdmin(BaseUserAdmin):
 
 class ProductView(admin.ModelAdmin):
     list_display = ("name", "price", "brand")
+    form=ProductForm
 
 admin.site.register(Category)
 admin.site.register(Product,ProductView)

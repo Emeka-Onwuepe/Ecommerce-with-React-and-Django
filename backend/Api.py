@@ -74,12 +74,6 @@ class ProductViewset(generics.GenericAPIView):
             querry=Product.objects.filter(category=item)[:12]
             for item in querry:
                 queryset.append(item) 
-                    # print()
-                # for price in item.multiprice:
-                #     querry=Product.objects.get(id=item)
-                #     prices.append(item) 
-                    
-                # print(item.multiprice)
         return queryset
     
 class RegisterUser(generics.GenericAPIView):

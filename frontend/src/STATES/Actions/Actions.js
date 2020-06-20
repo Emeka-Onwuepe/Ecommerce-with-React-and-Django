@@ -225,7 +225,6 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 Ordered: [...state.Ordered, action.data.Ordered],
-                // OrderedProduct: action.data.OrderedProduct,
                 messages: action.messages,
                 success: action.success,
                 cart: action.cart,
@@ -447,50 +446,3 @@ const StoreContextProvider = (props) => {
 
 
         export default StoreContextProvider;
-
-
-
-
-        // case DELETE_MESSAGES:
-        //     return {
-        //         ...state,
-        //         messages: "",
-        //     }
-        // case DELETE_ERROR:
-        //     return {
-        //         ...state,
-        //         message: "",
-        //         status: "",
-        //         messages: ""
-        //     }
-
-        //Action Types
-        // export const GET_STORE = "GET_STORE";
-
-        // export const DELETE_ERROR = "DELETE_ERROR";
-        // export const DELETE_MESSAGES = "DELETE_MESSAGES";
-
-
-
-        //Actions dispatchers
-        // export const getstore = (config) => {
-        //     return axios.get('/leads/api/lead/', config).then(res => {
-        //         return {
-        //             type: GET_STORE,
-        //             data: res.data
-        //         }
-        //     }).catch(err => {
-        //         return {
-        //             type: ADD_ERROR,
-        //             data: err.response.data,
-        //             status: err.response.status
-        //         }
-        //     })
-        // }
-
-
-
-
-
-
-        //

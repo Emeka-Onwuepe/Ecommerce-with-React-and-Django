@@ -5,11 +5,6 @@
     margin-bottom: 10px;
 }
 
-
-/* .prices {
-    
-} */
-
 .prices p {
     color: purple
 }
@@ -25,7 +20,8 @@
     color: black;
 }
 
-.productDisplay p {
+.productDisplay p,
+.productDisplay div {
     width: 90%;
     margin: 5px auto;
     padding: 5px;

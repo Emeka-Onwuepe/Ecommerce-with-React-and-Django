@@ -20,9 +20,6 @@
     }
     
     body {
-        /* background-color: #f3d10d; */
-        /* background-color: #aa9310; */
-        /* background-color: white; */
         background-color: #fdfdfd;
     }
     
@@ -57,12 +54,7 @@
         border: 0px;
         background-color: #fcfbfc;
         border: 1px dotted purple;
-        /* border-radius: 50px; */
     }
-    /* legend {
-    margin: 0px auto;
-    color: #0978c6;
-} */
     
     legend {
         text-align: center;
@@ -221,7 +213,4 @@
         fieldset {
             width: 65%
         }
-        /* label {
-        margin-left: 9%;
-    } */
     }

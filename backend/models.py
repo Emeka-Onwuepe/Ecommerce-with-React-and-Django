@@ -1,8 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser,PermissionsMixin)
-# from django.contrib.auth.models import User
-# from django.contrib.auth import get_user_model
-# Usermodel=get_user_model()
 from django.db.models.signals import pre_save, post_delete
 from django.dispatch import receiver
 import datetime
@@ -39,7 +36,7 @@ class Product(models.Model):
     category= models.ForeignKey(Category, related_name='category', on_delete=models.CASCADE)
     name =models.CharField(max_length=156)
     price= models.IntegerField(blank=True, default=0)
-    multiprice=models.ManyToManyField(MultiplePrice,default="none")
+    multiprice=models.ManyToManyField(MultiplePrice,default="none",null=True,blank=True)
     brand=models.CharField(max_length=156)
     discription=models.TextField()
     image=models.ImageField()
@@ -114,13 +111,10 @@ class User(AbstractBaseUser,PermissionsMixin):
     is_admin = models.BooleanField(default=False)
     staff=models.BooleanField(default=False)
     owner=models.BooleanField(default=False)
-    # is_staff = models.BooleanField(default=False)
-    # is_staffs = models.BooleanField(default=False)
     
     objects = UserManager()
     
     USERNAME_FIELD = 'email'
-    # REQUIRED_FIELDS = ['phone_number']
     
     def __str__(self):
         return f'{self.first_name} {self.last_name}'

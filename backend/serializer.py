@@ -26,11 +26,9 @@ class GetUserSerializer(serializers.ModelSerializer):
         exclude=["password","last_login","is_active","is_admin","staff","is_superuser","owner","groups","user_permissions"]
         
 class OrderedSerializer(serializers.ModelSerializer):
-    # created=serializers.DateTimeField(format="%d/%h/%Y %H:%M")
     class Meta:
         model=Ordered
         fields= "__all__"
-        # extra_kwargs = {"created": {"write_only": True}}
     
     def create(self, validated_data):
         order = Ordered.objects.create(OrderId=validated_data["OrderId"], customer=validated_data["customer"],total=validated_data["total"])
@@ -53,10 +51,7 @@ class OrderedProductSerializer(serializers.ModelSerializer):
            
            
 class UserSerializer(serializers.ModelSerializer):
-   # email=serializers.EmailField(required=True)
     class Meta:
-        # model = settings.AUTH_USER_MODEL
-        # model = User
         model = User
         fields = ["id", "first_name","last_name", "email","phone_number","address" ,"password"]
         extra_kwargs = {"password": {"write_only": True}}
