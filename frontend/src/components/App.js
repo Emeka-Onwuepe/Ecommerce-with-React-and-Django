@@ -2,17 +2,17 @@ import 'core-js/es/map';
 import 'core-js/es/set';
 import 'core-js/es/promise';
 import React from 'react';
-import ReactDOM from 'react-dom'
-import { Provider as AlertProvider } from 'react-alert'
-import AlertTemplate from 'react-alert-template-basic'
+import ReactDOM from 'react-dom';
+import { Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
 import { transitions, positions, types } from 'react-alert';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
 import StoreContextProvider from '../STATES/Actions/Actions';
 import Alerts from './Alerts';
 import Routes from './Routes';
-import Loading from "./Loading"
+import Loading from "./Loading";
 import Header from './header/Header';
-import '../css/main.css'
+import '../css/main.css';
 import Footer from './footer/Footer';
 import BackToTop from './BackToTop';
 

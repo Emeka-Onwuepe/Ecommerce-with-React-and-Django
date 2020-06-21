@@ -1,10 +1,8 @@
 import axios from 'axios';
-import {
+import React, {
+    useEffect,
     createContext,
     useReducer
-} from 'react/cjs/react.development';
-import React, {
-    useEffect
 } from 'react';
 
 
@@ -41,23 +39,23 @@ const sentenceCase = (data) => {
 
 //stort func
 const sort = (data) => {
-        const stored = []
-        let presort = {}
-        data.categories.forEach(x => {
-            presort.id = x.id
-            presort.name = sentenceCase(x.name)
-            const product = data.products.filter((y) => {
-                return x.id == y.category
-            })
-            presort.products = product
-            if (presort.products.length > 0) {
-                stored.push(presort)
-            }
-            presort = {}
+    const stored = []
+    let presort = {}
+    data.categories.forEach(x => {
+        presort.id = x.id
+        presort.name = sentenceCase(x.name)
+        const product = data.products.filter((y) => {
+            return x.id == y.category
         })
-        return stored
-    }
-    //Actions dispatchers
+        presort.products = product
+        if (presort.products.length > 0) {
+            stored.push(presort)
+        }
+        presort = {}
+    })
+    return stored
+}
+//Actions dispatchers
 export const getstore = () => {
     return axios.get('/api/products').then(res => {
         let data = sort(res.data)
@@ -218,148 +216,148 @@ const storeReducer = (state, action) => {
             return {
                 ...state,
                 store: action.data,
-                prices: action.prices,
-                loading: false,
+                    prices: action.prices,
+                    loading: false,
             }
-        case PROCESS_ORDER:
-            return {
-                ...state,
-                Ordered: [...state.Ordered, action.data.Ordered],
-                messages: action.messages,
-                success: action.success,
-                cart: action.cart,
-                loading: false,
-            }
-        case CLEAR_SUCCESS:
-            return {
-                ...state,
-                success: false,
-                loading: false,
-            }
-        case ADD_TO_CART:
-            return {
-                ...state,
-                cart: [...state.cart, action.data],
-                loading: false,
-            }
-        case UPDATE_CART:
-            return {
-                ...state,
-                cart: [...action.data],
-                loading: false,
-            }
-        case GET_CATEGORY:
-            return {
-                ...state,
-                category: action.data,
-                prices: action.prices,
-                loading: false,
-            }
-        case GET_BRAND:
-            return {
-                ...state,
-                brand: action.data,
-                prices: action.prices,
-                loading: false,
-            }
-        case GET_ORDERED_PRODUCTS:
-            return {
-                ...state,
-                OrderedProduct: action.data,
-                loading: false,
-            }
-        case GET_ALL:
-            return {
-                ...state,
-                searchstore: action.data,
-                prices: action.prices,
-                loading: false,
-            }
-        case LOADING:
-            return {
-                ...state,
-                loading: true
-            }
-        case LOADED:
-            return {
-                ...state,
-                loading: false,
-            }
-        case ADD_SEARCH:
-            return {
-                ...state,
-                searchResult: action.data,
-                loading: false,
-            }
-        case DELETE_SEARCH:
-            return {
-                ...state,
-                searchResult: '',
-                loading: false,
-            }
-        case REGISTERUSER:
-            return {
-                ...state,
-                User: action.data,
-                messages: action.messages,
-                check: action.check,
-                loading: false,
-            }
+            case PROCESS_ORDER:
+                return {
+                    ...state,
+                    Ordered: [...state.Ordered, action.data.Ordered],
+                        messages: action.messages,
+                        success: action.success,
+                        cart: action.cart,
+                        loading: false,
+                }
+                case CLEAR_SUCCESS:
+                    return {
+                        ...state,
+                        success: false,
+                            loading: false,
+                    }
+                    case ADD_TO_CART:
+                        return {
+                            ...state,
+                            cart: [...state.cart, action.data],
+                                loading: false,
+                        }
+                        case UPDATE_CART:
+                            return {
+                                ...state,
+                                cart: [...action.data],
+                                    loading: false,
+                            }
+                            case GET_CATEGORY:
+                                return {
+                                    ...state,
+                                    category: action.data,
+                                        prices: action.prices,
+                                        loading: false,
+                                }
+                                case GET_BRAND:
+                                    return {
+                                        ...state,
+                                        brand: action.data,
+                                            prices: action.prices,
+                                            loading: false,
+                                    }
+                                    case GET_ORDERED_PRODUCTS:
+                                        return {
+                                            ...state,
+                                            OrderedProduct: action.data,
+                                                loading: false,
+                                        }
+                                        case GET_ALL:
+                                            return {
+                                                ...state,
+                                                searchstore: action.data,
+                                                    prices: action.prices,
+                                                    loading: false,
+                                            }
+                                            case LOADING:
+                                                return {
+                                                    ...state,
+                                                    loading: true
+                                                }
+                                                case LOADED:
+                                                    return {
+                                                        ...state,
+                                                        loading: false,
+                                                    }
+                                                    case ADD_SEARCH:
+                                                        return {
+                                                            ...state,
+                                                            searchResult: action.data,
+                                                                loading: false,
+                                                        }
+                                                        case DELETE_SEARCH:
+                                                            return {
+                                                                ...state,
+                                                                searchResult: '',
+                                                                    loading: false,
+                                                            }
+                                                            case REGISTERUSER:
+                                                                return {
+                                                                    ...state,
+                                                                    User: action.data,
+                                                                        messages: action.messages,
+                                                                        check: action.check,
+                                                                        loading: false,
+                                                                }
 
-        case LOGIN:
-            return {
-                ...state,
-                User: {
-                    user: action.data.user,
-                    token: action.data.token,
-                },
-                messages: action.messages,
-                Ordered: action.data.ordered,
-                loading: false,
+                                                                case LOGIN:
+                                                                    return {
+                                                                        ...state,
+                                                                        User: {
+                                                                                user: action.data.user,
+                                                                                token: action.data.token,
+                                                                            },
+                                                                            messages: action.messages,
+                                                                            Ordered: action.data.ordered,
+                                                                            loading: false,
 
-            }
-        case LOGOUT:
-        case DELETE_USER:
-            return {
-                ...state,
-                User: "",
-                messages: "",
-                stores: "",
-                Ordered: "",
-                OrderedProduct: "",
-                loading: false,
-            }
-        case ADD_ERROR:
-            return {
-                ...state,
-                message: action.data,
-                status: action.status,
-                loading: false,
-            }
-        case DELETE_MESSAGES:
-            return {
-                ...state,
-                message: "",
-                status: "",
-                messages: ""
-            }
-        case SEND_MAIL:
-            return {
-                ...state,
-                messages: action.messages,
-                loading: false,
-            }
-        case SET_SCREEN_SIZE:
-            return {
-                ...state,
-                screenWidth: action.width,
-                scrow: action.scrow,
-            }
+                                                                    }
+                                                                    case LOGOUT:
+                                                                    case DELETE_USER:
+                                                                        return {
+                                                                            ...state,
+                                                                            User: "",
+                                                                                messages: "",
+                                                                                stores: "",
+                                                                                Ordered: "",
+                                                                                OrderedProduct: "",
+                                                                                loading: false,
+                                                                        }
+                                                                        case ADD_ERROR:
+                                                                            return {
+                                                                                ...state,
+                                                                                message: action.data,
+                                                                                    status: action.status,
+                                                                                    loading: false,
+                                                                            }
+                                                                            case DELETE_MESSAGES:
+                                                                                return {
+                                                                                    ...state,
+                                                                                    message: "",
+                                                                                        status: "",
+                                                                                        messages: ""
+                                                                                }
+                                                                                case SEND_MAIL:
+                                                                                    return {
+                                                                                        ...state,
+                                                                                        messages: action.messages,
+                                                                                            loading: false,
+                                                                                    }
+                                                                                    case SET_SCREEN_SIZE:
+                                                                                        return {
+                                                                                            ...state,
+                                                                                            screenWidth: action.width,
+                                                                                                scrow: action.scrow,
+                                                                                        }
 
-        default:
-            return {
-                ...state
-            }
+                                                                                        default:
+                                                                                            return {
+                                                                                                ...state
+                                                                                            }
     }
 }
 
@@ -367,12 +365,9 @@ const storeReducer = (state, action) => {
 //build stateProvider
 
 export const storeContext = createContext()
-const initialState = {
-    cart: []
-}
 
 const StoreContextProvider = (props) => {
-        const [storestate, storedispatch] = useReducer(storeReducer, initialState,
+        const [storestate, storedispatch] = useReducer(storeReducer, {},
             () => {
                 const localdata = localStorage.getItem("storestate");
                 let finaldata = ""
