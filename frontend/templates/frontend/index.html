@@ -4,22 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
+    <title>PEASTAN</title>
+    <meta name="description" content="we offer best quality of Textiles, Cosmetics, Markups, Orginal Human Hairs,
+    Organic Flawless creams and general goods. We offer both wholesale and retail services">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="" type="">
-    <link rel="apple-touch-icon" href="">
-    <link rel="icon" href="" type="image/png">
-    <meta name="description" content="" />
-    <meta name="keywords" content=" " />
+    <link rel="shortcut icon" href="{% static 'CSS/logo.jpg' %}" type="image/jpg" type="image/jpg">
+    <link rel="apple-touch-icon" href="{% static 'CSS/logo.jpg' %}" type="image/jpg">
+    <link rel="icon" href="{% static 'CSS/logo.jpg' %}" type="image/jpg" type="image/jpg">
+
+    <meta name="keywords" content="{% for product in products  %}{{product}},{% endfor %} {% for category in categories %}{% if forloop.last %}{{category}}.{% else %}{{category}},{% endif %}{% endfor%} " />
     <meta name="author" content="Emeka Casper Onwuepe " />
-    <meta property="og:url" content="" />
+    <meta property="og:url" content="{{request.build_absolute_uri}}" />
     <meta property="og:type" content="" />
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:image" content="" />
+    <meta property="og:title" content="PEASTAN" />
+    <meta property="og:description" content="we offer best quality of Textiles, Cosmetics, Markups, Orginal Human Hairs,
+    Organic Flawless creams and general goods. We offer both wholesale and retail services" />
+    <meta property="og:image" content="{% static 'CSS/logo.jpg' %}" />
 </head>
 
 <body>
